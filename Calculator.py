@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image,ImageTk
+from logic import *
 
 app = tk.Tk()
 app.title("Calculator")
@@ -27,6 +28,7 @@ disp = tk.Entry(app, font=('Time',18),justify='right',borderwidth=15,relief=tk.F
 disp.place(x=20,y=60,width=460,height=70)
 disp.focus_set()
 
+
 def clear():
     disp.delete(0,tk.END)
 
@@ -35,7 +37,8 @@ def detectKey(e):
     if(e.keycode == 27):
         disp.delete(0,tk.END)
     elif(e.keycode == 13):
-        equal_press()
+        inp = disp.get()
+        calculate(inp)
     elif(e.char == '%'):
         print('percent')
 
@@ -200,10 +203,8 @@ close_bracket = tk.Button(image=close_bracket1, borderwidth=0, bg=theme, activeb
 close_bracket.place(x=col3,y=row1)
 
 def equal_press():
-    print("Answer to print")
     inp = disp.get()
-    print(inp)
-    pass
+    calculate(inp)
 
 equal1 = Image.open('numbers/equal.png')
 equal1 = equal1.resize((square,square))
