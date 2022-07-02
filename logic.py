@@ -10,24 +10,27 @@ def calculate(inp):
     temp = ''           # String to Hold the Number
 
     # Seperate the Operators from the numbers:
-    bracket = False
+    bracket = 0
     for i,j in enumerate(inp):
         if j in available_operations:
-            if j == ')' and bracket == False:
+            if j == ')' and bracket == 0:
                 return syntax_Error
-            elif bracket == False and j == '(':
-                bracket = True
-            elif bracket ==  True and j == ')':
-                bracket = False
+            elif j == '(':
+                bracket += 1
+            elif bracket != 0 and j == ')':
+                bracket -= 1
             if temp != '':
                 nums.append(float(temp))
             temp = ''
             operato.append(j)
         else:
             temp += j
+    
+    # if Last element is not an operator append it to the Number's list
     if temp != '':
         nums.append(float(temp))
-    if bracket == True:
+    # if the Brackets are not satisfied
+    if bracket != 0:
         return syntax_Error
 
     print(nums)
