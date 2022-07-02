@@ -24,7 +24,10 @@ row5 = row4 + square + 10
 
 inputLabel = tk.Label(app,text="Calculator: ", font=('Times',18), bg=theme, fg='white').place(x=20,y=10)
 
-disp = tk.Entry(app, font=('Time',18),justify='right',borderwidth=15,relief=tk.FLAT)
+displayValue = tk.StringVar()
+displayValue.set('')
+
+disp = tk.Entry(app,textvariable=displayValue, font=('Time',18),justify='right',borderwidth=15,relief=tk.FLAT)
 disp.place(x=20,y=60,width=460,height=70)
 disp.focus_set()
 
@@ -32,13 +35,17 @@ disp.focus_set()
 def clear():
     disp.delete(0,tk.END)
 
+def run():
+    inp = disp.get()
+    result = calculate(inp)
+    displayValue.set(result)
+
 def detectKey(e):
     # print(e.keycode)
     if(e.keycode == 27):
         disp.delete(0,tk.END)
     elif(e.keycode == 13):
-        inp = disp.get()
-        calculate(inp)
+        run()
     elif(e.char == '%'):
         print('percent')
 
@@ -203,8 +210,7 @@ close_bracket = tk.Button(image=close_bracket1, borderwidth=0, bg=theme, activeb
 close_bracket.place(x=col3,y=row1)
 
 def equal_press():
-    inp = disp.get()
-    calculate(inp)
+    run()
 
 equal1 = Image.open('numbers/equal.png')
 equal1 = equal1.resize((square,square))
