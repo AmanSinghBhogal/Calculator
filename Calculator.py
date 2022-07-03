@@ -16,8 +16,8 @@ col2 = col1 + square + 10
 col3 =col2 + square + 10
 col4 =col3 + square + 10
 # row0 = 160
-row1 = 160
-# row1 = 250
+# row1 = 160
+row1 = 180
 row2 = row1 + square + 10
 row3 = row2 + square + 10
 row4 = row3 + square + 10
@@ -31,33 +31,34 @@ result = tk.StringVar()
 result.set('')
 
 disp = tk.Entry(app,textvariable=displayValue, font=('Times',18),justify='right',borderwidth=15,relief=tk.FLAT)
-# result = tk.Entry(app, textvariable=result,font=('Times',18),justify='right',borderwidth=15,relief=tk.FLAT)
-disp.place(x=20,y=60,width=460,height=70)
+disp.place(x=20,y=60,width=460,height=50)
 disp.focus_set()
+dispResult = tk.Entry(app, textvariable=result,font=('Times',18),justify='right',borderwidth=15,relief=tk.FLAT)
+dispResult.place(x=20,y=110,width=460,height=50)
 
 
-def clear():
-    disp.delete(0,tk.END)
+def clear_scr():
+    displayValue.set('')
+    result.set('')
 
 def run():
     inp = disp.get()
-    result = calculate(inp)
-    displayValue.set(result)
+    ans = calculate(inp)
+    result.set(str(ans) + ' =')
 
 def detectKey(e):
     # print(e.keycode)
     if(e.keycode == 27):
-        disp.delete(0,tk.END)
+        clear_scr()
     elif(e.keycode == 13):
         run()
-    elif(e.char == '%'):
-        print('percent')
+
 
 app.bind("<KeyPress>", detectKey)
 clear1 = Image.open('numbers/clear.png')
 clear1 = clear1.resize((square,square))
 clear1 = ImageTk.PhotoImage(clear1)
-clear = tk.Button(image=clear1, borderwidth=0, bg=theme, activebackground=theme, command=clear)
+clear = tk.Button(image=clear1, borderwidth=0, bg=theme, activebackground=theme, command=clear_scr)
 clear.place(x=col1,y=row5)
 
 def zero_press():
