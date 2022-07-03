@@ -7,7 +7,8 @@ app.title("Calculator")
 app.geometry("500x600")
 app.iconbitmap("im.ico")
 app.resizable(False,False)
-theme = "#0b0138"
+# theme = "#0b0138"
+theme = "grey"
 app.config(bg=theme)
 square = 70
 col1 = 90
@@ -22,12 +23,15 @@ row3 = row2 + square + 10
 row4 = row3 + square + 10
 row5 = row4 + square + 10
 
-inputLabel = tk.Label(app,text="Calculator: ", font=('Times',18), bg=theme, fg='white').place(x=20,y=10)
+inputLabel = tk.Label(app,text="Calculator: ", font=('Times',18), bg=theme).place(x=20,y=10)
 
 displayValue = tk.StringVar()
 displayValue.set('')
+result = tk.StringVar()
+result.set('')
 
-disp = tk.Entry(app,textvariable=displayValue, font=('Time',18),justify='right',borderwidth=15,relief=tk.FLAT)
+disp = tk.Entry(app,textvariable=displayValue, font=('Times',18),justify='right',borderwidth=15,relief=tk.FLAT)
+# result = tk.Entry(app, textvariable=result,font=('Times',18),justify='right',borderwidth=15,relief=tk.FLAT)
 disp.place(x=20,y=60,width=460,height=70)
 disp.focus_set()
 
@@ -65,14 +69,16 @@ zero1 = ImageTk.PhotoImage(zero1)
 zero = tk.Button(image=zero1, borderwidth=0, bg=theme, activebackground=theme, command=zero_press)
 zero.place(x=col2,y=row5)
 
-def per_press():
-    disp.insert(tk.END, '%')
+def deli_press():
+    i = disp.get()
+    j = len(i) - 1
+    disp.delete(j,tk.END)
 
-percent1 = Image.open('numbers/percent.png')
-percent1 = percent1.resize((square,square))
-percent1 = ImageTk.PhotoImage(percent1)
-percent = tk.Button(image=percent1, borderwidth=0, bg=theme, activebackground=theme,command=per_press)
-percent.place(x=col1,y=row1)
+del1 = Image.open('numbers/delete.png')
+del1 = del1.resize((square,square))
+del1 = ImageTk.PhotoImage(del1)
+deli = tk.Button(image=del1, borderwidth=0, bg=theme, activebackground=theme,command=deli_press)
+deli.place(x=col4,y=row1)
 
 def one_press():
     disp.insert(tk.END, 1)
@@ -162,16 +168,16 @@ plus1 = Image.open('numbers/plus.png')
 plus1 = plus1.resize((square,square))
 plus1 = ImageTk.PhotoImage(plus1)
 plus = tk.Button(image=plus1, borderwidth=0, bg=theme, activebackground=theme, command=plus_press)
-plus.place(x=col4,y=row1)
+plus.place(x=col4,y=row4)
 
 def sub_press():
     disp.insert(tk.END, '-')
 
-remove1 = Image.open('numbers/remove.png')
+remove1 = Image.open('numbers/minus.png')
 remove1 = remove1.resize((square,square))
 remove1 = ImageTk.PhotoImage(remove1)
 remove = tk.Button(image=remove1, borderwidth=0, bg=theme, activebackground=theme, command=sub_press)
-remove.place(x=col4,y=row2)
+remove.place(x=col4,y=row3)
 
 def divide_press():
     disp.insert(tk.END, '/')
@@ -180,7 +186,7 @@ divide1 = Image.open('numbers/divide.png')
 divide1 = divide1.resize((square,square))
 divide1 = ImageTk.PhotoImage(divide1)
 divide = tk.Button(image=divide1, borderwidth=0, bg=theme, activebackground=theme, command=divide_press)
-divide.place(x=col4,y=row3)
+divide.place(x=col3,y=row1)
 
 def mul_press():
     disp.insert(tk.END, '*')
@@ -189,7 +195,7 @@ multiply1 = Image.open('numbers/multiply.png')
 multiply1 = multiply1.resize((square,square))
 multiply1 = ImageTk.PhotoImage(multiply1)
 multiply = tk.Button(image=multiply1, borderwidth=0, bg=theme, activebackground=theme, command=mul_press)
-multiply.place(x=col4,y=row4)
+multiply.place(x=col4,y=row2)
 
 def obrack_press():
     disp.insert(tk.END, '(')
@@ -198,7 +204,7 @@ open_bracket1 = Image.open('numbers/open-bracket.png')
 open_bracket1 = open_bracket1.resize((square,square))
 open_bracket1 = ImageTk.PhotoImage(open_bracket1)
 open_bracket = tk.Button(image=open_bracket1, borderwidth=0, bg=theme, activebackground=theme, command=obrack_press)
-open_bracket.place(x=col2,y=row1)
+open_bracket.place(x=col1,y=row1)
 
 def cbrack_press():
     disp.insert(tk.END, ')')
@@ -207,7 +213,7 @@ close_bracket1 = Image.open('numbers/close-bracket.png')
 close_bracket1 = close_bracket1.resize((square,square))
 close_bracket1 = ImageTk.PhotoImage(close_bracket1)
 close_bracket = tk.Button(image=close_bracket1, borderwidth=0, bg=theme, activebackground=theme, command=cbrack_press)
-close_bracket.place(x=col3,y=row1)
+close_bracket.place(x=col2,y=row1)
 
 def equal_press():
     run()
