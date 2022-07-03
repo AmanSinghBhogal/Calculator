@@ -43,7 +43,7 @@ def clear_scr():
 def run():
     inp = disp.get()
     ans = calculate(inp)
-    result.set(str(ans) + ' =')
+    result.set('= '+ str(ans))
 
 def detectKey(e):
     # print(e.keycode)
