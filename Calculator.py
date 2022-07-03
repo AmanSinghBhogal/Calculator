@@ -71,6 +71,7 @@ zero = tk.Button(image=zero1, borderwidth=0, bg=theme, activebackground=theme, c
 zero.place(x=col2,y=row5)
 
 def deli_press():
+    result.set('')
     i = disp.get()
     j = len(i) - 1
     disp.delete(j,tk.END)
