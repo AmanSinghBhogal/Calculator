@@ -3,7 +3,7 @@
 </div>
 
 ## About Calculator:
-This is an Calculator Application made in Python using Tkinter library.
+This is an Calculator Application made in Python using Tkinter library.The source code is available to everyone under the standard <a href a="https://github.com/AmanSinghBhogal/Calculator">MIT license</a>
 
 ## Screen Shots:
 <div align="center">
