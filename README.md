@@ -7,9 +7,13 @@ This is an Calculator Application made in Python using Tkinter library.
 
 ## Screen Shots:
 <div align="center">
-  <img src="./images/S1.jpg" height="600"  alt="S1">
-  <img src="./images/S2.jpg" height="600"  alt="S2">
-  <img src="./images/S3.jpg" height="600"  alt="S2">
+  <img src="./images/S1.JPG" height="600"  alt="S1">
+</div>
+<div align="center">
+  <img src="./images/S2.JPG" height="600"  alt="S2">
+</div>
+<div align="center">
+  <img src="./images/S3.JPG" height="600"  alt="S3">
 </div>
 
 ### Steps to Run on Local Machine
