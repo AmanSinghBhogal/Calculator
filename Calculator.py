@@ -7,7 +7,6 @@ app.title("Calculator")
 app.geometry("500x600")
 app.iconbitmap("im.ico")
 app.resizable(False,False)
-# theme = "#0b0138"
 theme = "grey"
 app.config(bg=theme)
 square = 70
